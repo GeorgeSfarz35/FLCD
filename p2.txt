@@ -1,0 +1,33 @@
+//check if a list contains as many odd numbers as even numbers;
+begin
+list[20][integer] l1;
+integer i, l, on, en;
+on = en = 0;
+in l;
+for i = 0; i < l:
+bfor
+    in l[i];
+enfor
+i = 0;
+while i < l:
+bwhile
+    if l1[i] % 2 == 0:
+    bif
+        inc en;
+    elif
+        inc on;
+    enif
+    inc i;
+ewhile
+if en == on:
+bif
+    out "there are as many odd numbers as even numbers";
+elif
+    if en > on:
+    bif
+        out "there are more even numbers than odd numbers"
+    elif
+        out "there are more odd numbers than even numbers"
+    enif
+enif
+end

@@ -1,0 +1,14 @@
+//check if a number n is prime 
+integer n, 1d;
+1d = 2;
+while d < n / 2:
+bwhile
+    if n % d == 0:
+    bif
+        out "the number is not prime
+        end
+    enif
+    inc d
+ewhile
+out "the number is prime"
+end

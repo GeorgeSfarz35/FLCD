@@ -1,0 +1,15 @@
+//check if a number is a perfect square:begin
+integer n, sr;
+in n;
+sr = 1;
+while sr * sr < n:
+bwhile
+    inc sr;
+    if sr * sr == n:
+    bif
+        out "it is a perfect square";
+        end;
+    enif
+ewhile
+out "it is not a perfect square";
+end

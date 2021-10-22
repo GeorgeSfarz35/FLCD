@@ -1,0 +1,15 @@
+//compute the average of n numbers
+begin
+float avg, sum, x, n, c;
+sum = 0;
+c = 0;
+in n;
+while c < n:
+bwhile
+    in x;
+    sum = sum + x;
+    inc c;
+ewhile
+avg = sum / n;
+out avg;
+end

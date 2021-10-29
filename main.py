@@ -4,7 +4,7 @@ from lab3 import tokenGenerator, isIdentifier, isConstant
 from lab2 import *
 
 if __name__ == '__main__':
-    fileName = "perr.txt"
+    fileName = "p2.txt"
 
     file = open(fileName, 'r')
     for line in file:
@@ -24,13 +24,14 @@ if __name__ == '__main__':
             lineNo += 1
             for token in tokenGenerator(line[0:-1], separators):
                 if token in separators + operators + reservedWords:
-                    pif.add(codex[token], -1)
+                    if token != ' ':
+                        pif.add(codex[token], -1)
                 elif isIdentifier(token):
                     id = symbolTable.add(token)
-                    pif.add(codex['identifier'], id)
+                    pif.add(codex['identifier'], symbolTable.get(token).index)
                 elif isConstant(token):
                     id = symbolTable.add(token)
-                    pif.add(codex['constant'], id)
+                    pif.add(codex['constant'], symbolTable.get(token).index)
                 else:
                     #raise Exception('Unknown token ' + token + ' at line ' + str(lineNo))
                     print('Lexical Error:Unknown token ' + token + ' at line ' + str(lineNo))
@@ -42,6 +43,6 @@ if __name__ == '__main__':
         print('Program Internal Form: \n', pif)
         print('Symbol Table: \n', symbolTable.getTreeAsList())
 
-        print('\n\nCodification table: ')
+        print('\n\nCodex: ')
         for e in codex:
             print(e, " -> ", codex[e])

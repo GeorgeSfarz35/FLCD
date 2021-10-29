@@ -1,5 +1,5 @@
 begin
-list[20] l1;
+list l1;
 integer i, l, on, en;
 on = en = 0;
 in l;

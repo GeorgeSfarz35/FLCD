@@ -13,7 +13,7 @@ class BSTNode:
         if self.ident == None :
             self.ident = ident
             self.index = index
-            return 
+            return index
             
         if self.ident == ident:
             return -1
@@ -24,14 +24,15 @@ class BSTNode:
         if ident < self.ident:
             if self.left:
                 self.left.insert(ident, index)
-                return
+                return index
             self.left = BSTNode(index, ident)
-            return
+            return index
 
         if self.right:
             self.right.insert(ident, index)
-            return
+            return index
         self.right = BSTNode(index, ident)
+        return index
 
     def get(self, ident):
         if self.ident == ident:
@@ -53,13 +54,20 @@ class SymbolTable:
         self.size = 0
 
     def add(self, ident):
-        if self.root.insert(ident, self.size + 1) != -1 :
+        returnValue = self.root.insert(ident, self.size + 1)
+        if returnValue != -1 :
             self.size += 1
+        return returnValue
+        
 
     def get (self, ident):
-        self.root.get(ident)
+        return self.root.get(ident)
+
+    
     
     def getTreeAsList(self):
+        def myCriteria(e):
+            return e[0]
         finalList = list(tuple())
         queue = Queue()
         queue.put(self.root)
@@ -70,4 +78,5 @@ class SymbolTable:
             if queuedNode.right != None :
                 queue.put(queuedNode.right)
             finalList.append((queuedNode.index, queuedNode.ident))
+        finalList.sort(key=myCriteria)
         return finalList

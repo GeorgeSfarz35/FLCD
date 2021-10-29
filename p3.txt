@@ -1,6 +1,6 @@
 begin
 float avg, sum, x, n, c;
-sum = 0;
+sum = -1
 c = 0;
 in n;
 while c < n:

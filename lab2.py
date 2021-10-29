@@ -12,6 +12,10 @@ class BSTNode:
         if self.ident == ident:
             return -1
 
+        if(self.ident == None):
+            self.ident = ident
+            return 
+
         if ident < self.ident:
             if self.left:
                 self.left.insert(ident, index)
@@ -38,13 +42,12 @@ class BSTNode:
         return "Identifier does not exist"
 
 class SymbolTable:
-    def __init__(self, root, capacity = 100):
+    def __init__(self, root = BSTNode(0), capacity = 100):
         self.capacity = capacity
-        self.root = BSTNode(None)
+        self.root = root
         self.size = 0
-        self.root.index = 0
 
-    def insert(self, ident):
+    def add(self, ident):
         self.root.insert(ident, self.size + 1)
         self.size += 1
 
@@ -61,10 +64,3 @@ class SymbolTable:
             if(queue[0].left != None):
                 queue.insert(queue[0].left)
             finalList.insert((queue[0].index, queue.pop(0).ident))
-
-if __name__ == "__main__":
-    identifiers = BSTNode()
-    constants = BSTNode()
-    identifiers.ident = "name1"
-    identifiers.insert("name2")
-    print(identifiers.get("name2").ident)

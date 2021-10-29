@@ -1,4 +1,4 @@
-//check if a number is a perfect square:begin
+
 integer n, sr;
 in n;
 sr = 1;

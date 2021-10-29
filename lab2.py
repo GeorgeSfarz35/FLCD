@@ -1,4 +1,5 @@
-from typing import List, Tuple
+from queue import Queue
+
 
 
 class BSTNode:
@@ -55,12 +56,15 @@ class SymbolTable:
         self.root.get(ident)
     
     def getTreeAsList(self):
-        finalList = List(Tuple())
-        queue = List[BSTNode]
-        queue.insert(self.root)
-        while(queue.__sizeof__ > 0):
-            if(queue[0].left != None):
-                queue.insert(queue[0].left)
-            if(queue[0].left != None):
-                queue.insert(queue[0].left)
-            finalList.insert((queue[0].index, queue.pop(0).ident))
+        finalList = list(tuple())
+        queue = Queue()
+        length = 1
+        queue.put(self.root)
+        while(queue.qsize() > 0):
+            queuedNode = queue.get(0)
+            if(queuedNode.left != None):
+                queue.put(queuedNode.left)
+            if(queuedNode.right != None):
+                queue.put(queuedNode.right)
+            finalList.append((queuedNode.index, queuedNode.ident))
+        return finalList

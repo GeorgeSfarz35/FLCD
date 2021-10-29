@@ -34,7 +34,7 @@ if __name__ == '__main__':
                     raise Exception('Unknown token ' + token + ' at line ' + str(lineNo))
 
     print('Program Internal Form: \n', pif)
-    print('Symbol Table: \n', symbolTable)
+    print('Symbol Table: \n', symbolTable.getTreeAsList())
 
     print('\n\nCodification table: ')
     for e in codex:

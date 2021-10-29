@@ -10,7 +10,7 @@ def isPartOfOperator(char):
 
 
 def isEscapedQuote(line, index):
-    return False if index == 0 else line[index - 1] == '//'
+    return False if index == 0 else line[index - 1] == '\\'
 
 
 def getStringToken(line, index):

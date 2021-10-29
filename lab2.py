@@ -10,12 +10,16 @@ class BSTNode:
         self.index = index
 
     def insert(self, ident, index):
+        if self.ident == None :
+            self.ident = ident
+            self.index = index
+            return 
+            
         if self.ident == ident:
             return -1
+        if self.get(ident) != "Identifier does not exist" :
+            return -1
 
-        if(self.ident == None):
-            self.ident = ident
-            return 
 
         if ident < self.ident:
             if self.left:
@@ -49,8 +53,8 @@ class SymbolTable:
         self.size = 0
 
     def add(self, ident):
-        self.root.insert(ident, self.size + 1)
-        self.size += 1
+        if self.root.insert(ident, self.size + 1) != -1 :
+            self.size += 1
 
     def get (self, ident):
         self.root.get(ident)
@@ -58,13 +62,12 @@ class SymbolTable:
     def getTreeAsList(self):
         finalList = list(tuple())
         queue = Queue()
-        length = 1
         queue.put(self.root)
-        while(queue.qsize() > 0):
+        while queue.qsize() > 0 :
             queuedNode = queue.get(0)
-            if(queuedNode.left != None):
+            if queuedNode.left != None :
                 queue.put(queuedNode.left)
-            if(queuedNode.right != None):
+            if queuedNode.right != None :
                 queue.put(queuedNode.right)
             finalList.append((queuedNode.index, queuedNode.ident))
         return finalList

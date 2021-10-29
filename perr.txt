@@ -1,4 +1,3 @@
-//check if a number n is prime 
 integer n, 1d;
 1d = 2;
 while d < n / 2:

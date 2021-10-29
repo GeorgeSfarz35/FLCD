@@ -4,7 +4,7 @@ from lab3 import tokenGenerator, isIdentifier, isConstant
 from lab2 import *
 
 if __name__ == '__main__':
-    fileName = input("Insert file name: ")
+    fileName = "perr.txt"
 
     file = open(fileName, 'r')
     for line in file:
@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
     symbolTable = SymbolTable()
     pif = ProgramInternalForm()
+    errors = False
 
     with open(fileName, 'r') as file:
         lineNo = 0
@@ -31,11 +32,16 @@ if __name__ == '__main__':
                     id = symbolTable.add(token)
                     pif.add(codex['constant'], id)
                 else:
-                    raise Exception('Unknown token ' + token + ' at line ' + str(lineNo))
+                    #raise Exception('Unknown token ' + token + ' at line ' + str(lineNo))
+                    print('Lexical Error:Unknown token ' + token + ' at line ' + str(lineNo))
+                    errors = True
 
-    print('Program Internal Form: \n', pif)
-    print('Symbol Table: \n', symbolTable.getTreeAsList())
+    if errors:
+        print("The program contains errors!")
+    else:
+        print('Program Internal Form: \n', pif)
+        print('Symbol Table: \n', symbolTable.getTreeAsList())
 
-    print('\n\nCodification table: ')
-    for e in codex:
-        print(e, " -> ", codex[e])
+        print('\n\nCodification table: ')
+        for e in codex:
+            print(e, " -> ", codex[e])

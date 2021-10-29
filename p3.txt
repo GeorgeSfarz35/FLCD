@@ -1,4 +1,3 @@
-//compute the average of n numbers
 begin
 float avg, sum, x, n, c;
 sum = 0;

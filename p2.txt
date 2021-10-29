@@ -1,6 +1,5 @@
-//check if a list contains as many odd numbers as even numbers;
 begin
-list[20][integer] l1;
+list[20] l1;
 integer i, l, on, en;
 on = en = 0;
 in l;

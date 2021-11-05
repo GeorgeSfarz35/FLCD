@@ -1,5 +1,6 @@
 
 integer n, sr;
+n = 'a'
 in n;
 sr = 1;
 while sr * sr < n:

@@ -4,7 +4,7 @@ from lab3 import tokenGenerator, isIdentifier, isConstant
 from lab2 import *
 
 if __name__ == '__main__':
-    fileName = "p2.txt"
+    fileName = "p1.txt"
 
     file = open(fileName, 'r')
     for line in file:
